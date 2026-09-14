@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  talker:
+    image: osrf/ros:foxy-desktop
+    volumes:
+    - ./ros2_ws:/root/ros2_ws
+    command: bash -c "sleep infinity"
+  listener:
+    image: osrf/ros:foxy-desktop
+    command: ros2 run demo_nodes_cpp listener
+    depends_on:
+      - talker
